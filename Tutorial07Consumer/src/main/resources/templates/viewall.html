@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Daftar Students</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#studentTable').DataTable();
+	});
+</script>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<table id="studentTable" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>NPM</th>
+					<th>Nama</th>
+					<th>GPA</th>
+					<th>Gelar</th>
+					<th>Opsi</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>No</th>
+					<th>NPM</th>
+					<th>Nama</th>
+					<th>GPA</th>
+					<th>Gelar</th>
+					<th>Opsi</th>
+				</tr>
+			</tfoot>
+			<tBody>
+				<div th:each="student,iterationStatus: ${students}">			
+					<tr>
+						<th th:text="${iterationStatus.count}"></th>
+						<th th:text="${student.npm}"></th>
+						<th th:text="${student.name}"></th>
+						<th th:text="${student.gpa}"></th>
+						<th th:text = "${student.gpa>=3.49}? 'Cum Laude!' : 'Sangat Memuaskan!'"></th>
+						<th>
+							<a th:href="'/student/update/' + ${student.npm}">Update Data</a><br/>
+	       					<a th:href="'/student/delete/' + ${student.npm}">Delete Data</a>
+	       				</th>
+					</tr>
+				</div>
+			</tBody>
+		</table>
+	</div>
+</body>
+</html>
+				<!--        <h3 th:text="'No. ' + ${iterationStatus.count}">No. 1</h3>
+	       	<h3 th:text="'NPM = ' + ${student.npm}">Student NPM</h3>
+	       	<h3 th:text="'Name = ' + ${student.name}">Student Name</h3>
+	       	<h3 th:text="'GPA = ' + ${student.gpa}">Student GPA</h3>
+	       	<h3 th:if = "${student.gpa>=3.49}? 'Cum Laude!' : 'Sangat Memuaskan!'"> Cum Laude! </h3>
+	       	<h3> Kuliah yang diambil </h3>
+			<ul th:each = "course,iterationStatus: ${student.courses}">
+				<li th:text = "${course.name} + '-' + ${course.credits} + ' sks'" >
+				Nama kuliah - X SKS
+				</li>
+			</ul>
+	       	<a th:href="'/student/update/' + ${student.npm}">Update Data</a><br/>
+	       	<a th:href="'/student/delete/' + ${student.npm}">Delete Data</a><br/>
+	       	<hr/> -->

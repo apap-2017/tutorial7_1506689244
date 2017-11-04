@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Ubah Mahasiswa</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="/js/bootstrap.min.js"></script>
+  
+</head>
+
+<body>	
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+
+		<form action="/student/update/submit" method="post" th:object="${student}">
+			<div class="form-group">
+				<label for="npm">NPM</label> 
+				<input class="form-control" type="text" name="npm" readonly="true" th:value="${student.npm}" th:field="*{npm}"/>
+			</div>
+			<div class="form-group">
+				<label for="name">Name</label> 
+				<input class="form-control" type="text" name="name" th:value="${student.name}" th:field="*{name}"/>
+			</div>
+			<div class="form-group">
+				<label for="gpa">GPA</label> 
+				<input class="form-control" type="text" name="gpa" th:value="${student.gpa}" th:field="*{gpa}"/>
+			</div>
+			<div>
+				<button class="btn btn-dark" type="submit" name="action" value="update">Update</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
+
