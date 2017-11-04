@@ -35,7 +35,7 @@ public interface CourseMapper {
     			javaType = List.class,
     			many = @Many(select="selectCourseById"))
     	})
-    List<CourseModel> selectAllCourses ();
+    List<StudentModel> selectAllCourses ();
 	
     @Select ("select studentcourse.id_course, student.name, student.npm, course.credits " +
     		"from studentcourse, student, course " +
