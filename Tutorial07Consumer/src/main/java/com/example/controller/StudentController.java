@@ -23,7 +23,7 @@ public class StudentController
     @RequestMapping("/")
     public String index (Model model)
     {
-    	model.addAttribute("title", "Tutorial 06 APAP");
+    	model.addAttribute("title", "Tutorial 07 APAP");
         return "index";
     }
 

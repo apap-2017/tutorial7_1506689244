@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Daftar Mata Kuliah</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#courseTable').DataTable();
+	});
+</script>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<table id="courseTable" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>ID</th>
+					<th>Course Name</th>
+					<th>Credits</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>No</th>
+					<th>ID</th>
+					<th>Course Name</th>
+					<th>Credits</th>
+				</tr>
+			</tfoot>
+			<tBody>
+				<div th:each="course,iterationStatus: ${courses}">			
+					<tr>
+						<th th:text="${iterationStatus.count}"></th>
+						<th th:text="${course.id_course}"></th>
+						<th th:text="${course.name}"></th>
+						<th th:text="${course.credits}"></th>
+					</tr>
+				</div>
+			</tBody>
+		</table>
+	</div>
+</body>
+</html>
