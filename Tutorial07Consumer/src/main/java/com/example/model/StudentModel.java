@@ -15,4 +15,5 @@ public class StudentModel
     private String name;
     private double gpa;
     private List <CourseModel> courses;
+    
 }
